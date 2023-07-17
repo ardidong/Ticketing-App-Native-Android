@@ -5,5 +5,6 @@ plugins {
 }
 
 ext{
-    extra["compose_ui_version"] = "1.2.0"
+    extra["compose_ui_version"] = "1.4.3"
+    extra["nav_version"] = "2.6.0"
 }

@@ -7,9 +7,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -22,9 +22,7 @@ import com.ardidong.ticketingapp.ui.theme.TicketingAppTheme
 
 @Composable
 fun HomeScreen(){
-    val scaffoldState = rememberScaffoldState()
     Scaffold(
-        scaffoldState = scaffoldState,
         modifier = Modifier.fillMaxSize(),
     ) {
         val scrollState = rememberScrollState()
@@ -55,19 +53,19 @@ fun WelcomeSection(modifier: Modifier = Modifier, name: String = "Explorer") {
     Box(
         modifier = modifier
             .clip(shape = RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp))
-            .background(MaterialTheme.colors.primary)
+            .background(MaterialTheme.colorScheme.primary)
     ) {
         Column(
             modifier = modifier
                 .padding(18.dp)
         ) {
             Text(
-                color = MaterialTheme.colors.onPrimary,
+                color = MaterialTheme.colorScheme.onPrimary,
                 text = "Hello, ${name}!",
                 fontSize = 16.sp
             )
             Text(
-                color = MaterialTheme.colors.onPrimary,
+                color = MaterialTheme.colorScheme.onPrimary,
                 text = "Where are we going today?",
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp
@@ -79,9 +77,9 @@ fun WelcomeSection(modifier: Modifier = Modifier, name: String = "Explorer") {
 @Composable
 fun SearchButton(modifier: Modifier = Modifier) {
     Surface(
-        color = MaterialTheme.colors.background,
+        color = MaterialTheme.colorScheme.background,
         shape = RoundedCornerShape(16.dp),
-        elevation = 4.dp,
+        shadowElevation = 4.dp,
         modifier = modifier
     ) {
         Row(
@@ -103,7 +101,7 @@ fun ExploreSection(modifier: Modifier = Modifier) {
             style = TextStyle(
                 fontSize = 20.sp,
                 fontWeight = FontWeight(700),
-                color = MaterialTheme.colors.onBackground,
+                color = MaterialTheme.colorScheme.onBackground,
             )
         )
         val list = listOf("satu", "dua", "tiga")
@@ -130,7 +128,7 @@ fun EventSection(modifier: Modifier = Modifier) {
             style = TextStyle(
                 fontSize = 20.sp,
                 fontWeight = FontWeight(700),
-                color = MaterialTheme.colors.onBackground,
+                color = MaterialTheme.colorScheme.onBackground,
             )
         )
         val list = listOf("satu", "dua", "tiga")
@@ -157,7 +155,7 @@ fun PlacesSection(modifier: Modifier = Modifier) {
             style = TextStyle(
                 fontSize = 20.sp,
                 fontWeight = FontWeight(700),
-                color = MaterialTheme.colors.onBackground,
+                color = MaterialTheme.colorScheme.onBackground,
             )
         )
         val list = listOf("satu", "dua", "tiga")

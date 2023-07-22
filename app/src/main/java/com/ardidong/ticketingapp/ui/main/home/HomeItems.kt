@@ -2,10 +2,9 @@ package com.ardidong.ticketingapp.ui.main.home
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,7 +18,6 @@ import androidx.compose.ui.unit.sp
 import com.ardidong.ticketingapp.ui.theme.Orange700
 
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun DestinationItem(
     modifier: Modifier = Modifier,
@@ -30,6 +28,7 @@ fun DestinationItem(
 ) {
     Surface(
         shape = RoundedCornerShape(16.dp),
+        shadowElevation = 8.dp,
         onClick = {onClick()}
     ) {
         Column(modifier = modifier
@@ -54,7 +53,7 @@ fun DestinationItem(
                 style = TextStyle(
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colors.onBackground,
+                    color = MaterialTheme.colorScheme.onBackground,
                 )
             )
 
@@ -80,7 +79,6 @@ fun DestinationItem(
 }
 
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun PlaceItem(modifier: Modifier = Modifier, place: String, onClick: () -> Unit) {
     Surface(
@@ -89,6 +87,7 @@ fun PlaceItem(modifier: Modifier = Modifier, place: String, onClick: () -> Unit)
             .height(160.dp),
         color = Color.LightGray,
         shape = RoundedCornerShape(16.dp),
+        shadowElevation = 8.dp,
         onClick = {onClick()}
     ) {
         Box( contentAlignment = Alignment.Center){

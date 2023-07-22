@@ -1,24 +1,24 @@
 package com.ardidong.ticketingapp.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
-private val DarkColorPalette = darkColors(
+private val DarkColorPalette = darkColorScheme(
     primary = Green700,
-    primaryVariant = Green600,
+    primaryContainer = Green600,
     secondary = Royal500,
     background = Gray900,
     onBackground = Color.Black,
     onPrimary = Color.White
 )
 
-private val LightColorPalette = lightColors(
+private val LightColorPalette = lightColorScheme(
     primary = Green700,
-    primaryVariant = Green600,
+    primaryContainer = Green600,
     secondary = Royal500,
     background = Gray100,
     onBackground = Color.Black,
@@ -43,7 +43,7 @@ fun TicketingAppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Comp
     }
 
     MaterialTheme(
-        colors = colors,
+        colorScheme = colors,
         typography = Typography,
         shapes = Shapes,
         content = content

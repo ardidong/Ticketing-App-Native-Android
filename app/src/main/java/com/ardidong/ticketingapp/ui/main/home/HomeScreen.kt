@@ -19,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ardidong.ticketingapp.ui.theme.TicketingAppTheme
+import com.ardidong.ticketingapp.ui.theme.shimmerEffect
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -140,9 +141,12 @@ fun ExploreSection(modifier: Modifier = Modifier) {
             contentPadding = PaddingValues(horizontal = 12.dp)
         ){
             items(list){ item ->
-                DestinationItem(name = "$item name", address = "$item address", price = "Rp50.000") {
-
-                }
+                DestinationItem(
+                    modifier = Modifier.shimmerEffect(),
+                    name = "$item name",
+                    address = "$item address",
+                    price = "Rp50.000"
+                )
             }
         }
 
@@ -161,15 +165,13 @@ fun EventSection(modifier: Modifier = Modifier) {
                 color = MaterialTheme.colorScheme.onBackground,
             )
         )
-        val list = listOf("satu", "dua", "tiga")
+        val list = listOf("candi Prambanan", "dua", "tiga")
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             contentPadding = PaddingValues(horizontal = 12.dp)
         ){
-            items(list){ item ->
-                DestinationItem(name = "$item name", address = "$item address", price = "Rp50.000") {
-
-                }
+            items(list){
+                DestinationItem(isLoading = true)
             }
         }
 

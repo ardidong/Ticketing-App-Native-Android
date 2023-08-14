@@ -13,9 +13,10 @@ private val DarkColorPalette = darkColorScheme(
     primary = Green700,
     primaryContainer = Green600,
     secondary = Royal500,
-    background = Gray900,
+    background = Gray100,
     onBackground = Color.Black,
-    onPrimary = Color.White
+    onPrimary = Color.White,
+    surface = Color.White
 )
 
 private val LightColorPalette = lightColorScheme(

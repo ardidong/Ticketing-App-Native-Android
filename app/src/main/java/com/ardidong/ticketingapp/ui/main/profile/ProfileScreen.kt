@@ -3,9 +3,9 @@ package com.ardidong.ticketingapp.ui.main.profile
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.ardidong.ticketingapp.ui.main.Greeting
 
 @Composable
 fun ProfileScreen() {
@@ -13,6 +13,6 @@ fun ProfileScreen() {
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
-        Greeting("Android")
+        Text("Android")
     }
 }

@@ -27,6 +27,7 @@ fun BottomNavBar(
     Row(
         modifier = modifier
             .fillMaxWidth()
+            .clip(shape = RoundedCornerShape(12.dp))
             .background(color = Color.White),
         horizontalArrangement = Arrangement.SpaceEvenly,
     ){
@@ -36,7 +37,7 @@ fun BottomNavBar(
 
 @Composable
 fun BottomMenuItem(
-    icon: @Composable () -> Unit,
+    icon: @Composable () -> Unit = { Icon(Icons.Filled.Favorite, contentDescription = "", tint = MaterialTheme.colorScheme.primary) },
     label: String,
     selected: Boolean,
     onClick: () -> Unit
@@ -53,7 +54,7 @@ fun BottomMenuItem(
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Icon(Icons.Filled.Favorite, contentDescription = "", tint = MaterialTheme.colorScheme.primary)
+            icon()
             Text(text = label, color = if (selected) MaterialTheme.colorScheme.primary else Color.DarkGray)
         }
     }
@@ -67,11 +68,10 @@ fun BottomBarPreview() {
         Scaffold{ innerPadding ->
             BoxWithConstraints(modifier = Modifier
                 .padding(innerPadding)){
-                HomeScreen()
+
                 MainBottomNavigation(
                     modifier = Modifier
                         .padding(16.dp)
-                        .clip(shape = RoundedCornerShape(24.dp))
                         .align(Alignment.BottomCenter),
                     navController = navController
                 )

@@ -64,7 +64,6 @@ fun MainBottomNavigation(modifier: Modifier = Modifier, navController: NavHostCo
         val currentDestination = navBackStackEntry?.destination
         bottomNavItem.forEach { screen ->
             BottomMenuItem(
-                icon = { Icon(Icons.Filled.Favorite, contentDescription = null) },
                 label = screen.route ,
                 selected = currentDestination?.hierarchy?.any(){it.route == screen.route} ?: false,
                 onClick = {
@@ -81,67 +80,14 @@ fun MainBottomNavigation(modifier: Modifier = Modifier, navController: NavHostCo
     }
 }
 
-//
-//@Composable
-//fun BottomNavBar(
-//    modifier: Modifier = Modifier,
-//    content: @Composable RowScope.() -> Unit
-//) {
-//    Row(
-//        modifier = modifier
-//            .fillMaxWidth()
-//            .background(color = Color.White),
-//        horizontalArrangement = Arrangement.SpaceEvenly,
-//        content = content,
-//    )
-//}
-//
-//@Composable
-//fun BottomMenuItem(
-//    icon: @Composable () -> Unit,
-//    label: String,
-//    selected: Boolean,
-//    onClick: () -> Unit
-//) {
-//    Button(
-//        colors = ButtonDefaults.textButtonColors(
-//            backgroundColor = Color.White
-//        ),
-//        shape = CircleShape,
-//        modifier = Modifier
-//            .padding(0.dp)
-//            .wrapContentSize(),
-//        onClick = onClick,
-//        elevation = ButtonDefaults.elevation(0.dp)
-//    ) {
-//        Column(
-//            horizontalAlignment = Alignment.CenterHorizontally
-//        ) {
-//            Icon(Icons.Filled.Favorite, contentDescription = "", tint = MaterialTheme.colors.primary)
-//            if(selected){
-//                Text(text = label, color = if (selected) MaterialTheme.colors.primary else Color.DarkGray)
-//            }
-//        }
-//    }
-//}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
 @Preview(showBackground = true,  backgroundColor = 0xFF00FF00)
 @Composable
 fun DefaultPreview() {
     TicketingAppTheme {
         val navController = rememberNavController()
         Scaffold{ innerPadding ->
+            innerPadding
             BoxWithConstraints(modifier = Modifier.fillMaxSize()){
-                MainNavigation(
-                    modifier = Modifier.padding(innerPadding),
-                    navController = navController
-                )
-
                 MainBottomNavigation(
                     modifier = Modifier
                         .padding(16.dp)

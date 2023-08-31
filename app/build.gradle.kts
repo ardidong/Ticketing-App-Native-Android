@@ -2,6 +2,8 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -26,11 +28,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
     buildFeatures {
         compose = true
@@ -48,11 +50,20 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview:${rootProject.extra["compose_ui_version"]}")
     implementation("androidx.compose.material3:material3:1.1.1")
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.30.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
 
     implementation("androidx.navigation:navigation-compose:${rootProject.extra["nav_version"]}")
     implementation("com.google.firebase:firebase-analytics-ktx")
 
     implementation(platform("com.google.firebase:firebase-bom:32.2.3"))
+
+    implementation("${rootProject.extra["daggerHilt"]}")
+    kapt("${rootProject.extra["hiltKapt"]}")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+
+
+    implementation(project(":domain"))
+    implementation(project(":data"))
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

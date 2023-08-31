@@ -27,7 +27,9 @@ import androidx.navigation.compose.rememberNavController
 import com.ardidong.ticketingapp.ui.main.navigation.MainNavigation
 import com.ardidong.ticketingapp.ui.main.navigation.bottomNavItem
 import com.ardidong.ticketingapp.ui.theme.TicketingAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -4,9 +4,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,6 +27,7 @@ fun BottomNavBar(
     Row(
         modifier = modifier
             .fillMaxWidth()
+            .clip(shape = RoundedCornerShape(12.dp))
             .background(color = Color.White),
         horizontalArrangement = Arrangement.SpaceEvenly,
     ){
@@ -36,26 +37,25 @@ fun BottomNavBar(
 
 @Composable
 fun BottomMenuItem(
-    icon: @Composable () -> Unit,
+    icon: @Composable () -> Unit = { Icon(Icons.Filled.Favorite, contentDescription = "", tint = MaterialTheme.colorScheme.primary) },
     label: String,
     selected: Boolean,
     onClick: () -> Unit
 ) {
     Button(
         colors = ButtonDefaults.textButtonColors(
-            backgroundColor = Color.White
+            containerColor = Color.White
         ),
         shape = CircleShape,
         modifier = Modifier
             .padding(0.dp),
-        onClick = onClick,
-        elevation = ButtonDefaults.elevation(0.dp,0.dp,0.dp,0.dp,0.dp)
+        onClick = onClick
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Icon(Icons.Filled.Favorite, contentDescription = "", tint = MaterialTheme.colors.primary)
-            Text(text = label, color = if (selected) MaterialTheme.colors.primary else Color.DarkGray)
+            icon()
+            Text(text = label, color = if (selected) MaterialTheme.colorScheme.primary else Color.DarkGray)
         }
     }
 }
@@ -68,11 +68,10 @@ fun BottomBarPreview() {
         Scaffold{ innerPadding ->
             BoxWithConstraints(modifier = Modifier
                 .padding(innerPadding)){
-                HomeScreen()
+
                 MainBottomNavigation(
                     modifier = Modifier
                         .padding(16.dp)
-                        .clip(shape = RoundedCornerShape(24.dp))
                         .align(Alignment.BottomCenter),
                     navController = navController
                 )

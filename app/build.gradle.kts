@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -45,9 +46,13 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.3.1")
     implementation("androidx.compose.ui:ui:${rootProject.extra["compose_ui_version"]}")
     implementation("androidx.compose.ui:ui-tooling-preview:${rootProject.extra["compose_ui_version"]}")
-    implementation("androidx.compose.material:material:1.4.3")
+    implementation("androidx.compose.material3:material3:1.1.1")
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.30.1")
 
     implementation("androidx.navigation:navigation-compose:${rootProject.extra["nav_version"]}")
+    implementation("com.google.firebase:firebase-analytics-ktx")
+
+    implementation(platform("com.google.firebase:firebase-bom:32.2.3"))
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

@@ -1,8 +1,9 @@
-package com.ardidong.ticketingapp.ui.main.home
+package com.ardidong.ticketingapp.ui.main.home.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -15,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -22,6 +24,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.ardidong.ticketingapp.ui.theme.Orange700
 import com.ardidong.ticketingapp.ui.theme.TicketingAppTheme
 import com.ardidong.ticketingapp.ui.theme.shimmerEffect
@@ -149,7 +152,13 @@ fun LoadingDestinationItem(modifier: Modifier = Modifier) {
 
 
 @Composable
-fun PlaceItem(modifier: Modifier = Modifier, place: String, onClick: () -> Unit) {
+fun PlaceItem(
+    modifier: Modifier = Modifier,
+    isLoading: Boolean = false,
+    place: String ="",
+    imageUrl : String ="",
+    onClick: () -> Unit
+) {
     Surface(
         modifier = modifier
             .width(160.dp)
@@ -159,7 +168,16 @@ fun PlaceItem(modifier: Modifier = Modifier, place: String, onClick: () -> Unit)
         shadowElevation = 8.dp,
         onClick = {onClick()}
     ) {
+
+        if (isLoading){
+            Box(modifier = Modifier
+                .fillMaxSize()
+                .shimmerEffect())
+            return@Surface
+        }
+
         Box( contentAlignment = Alignment.Center){
+           if (imageUrl.isNotBlank()) AsyncImage(model = imageUrl , contentDescription = imageUrl, contentScale = ContentScale.Crop)
             Text(text = place, textAlign = TextAlign.Center, style = TextStyle(
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
@@ -173,10 +191,8 @@ fun PlaceItem(modifier: Modifier = Modifier, place: String, onClick: () -> Unit)
 @Composable
 fun DestItem() {
     TicketingAppTheme {
-        DestinationItem(
-            name = "dfasdsasdf asdfasf fdsfdfd",
-            address = "dfas",
-            price = "fdas"
-        )
+        PlaceItem(isLoading = false) {
+
+        }
     }
 }

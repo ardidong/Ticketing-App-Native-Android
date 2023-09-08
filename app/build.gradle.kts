@@ -61,6 +61,8 @@ dependencies {
     kapt("${rootProject.extra["hiltKapt"]}")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
+    implementation("io.coil-kt:coil:2.4.0")
+    implementation("io.coil-kt:coil-compose:2.4.0")
 
     implementation(project(":domain"))
     implementation(project(":data"))

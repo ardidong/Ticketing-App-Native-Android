@@ -1,7 +1,9 @@
 package com.ardidong.ticketingapp.ui.main.home
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ardidong.ticketingapp.domain.destination.GetDestinationUseCase
 import com.ardidong.ticketingapp.domain.group.GetAllGroupUseCase
 import com.ardidong.ticketingapp.domain.group.GroupModel
 import com.ardidong.ticketingapp.ui.state.UiState
@@ -15,7 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getAllGroupUseCase: GetAllGroupUseCase
+    private val getAllGroupUseCase: GetAllGroupUseCase,
+    private val getDestinationUseCase: GetDestinationUseCase
 ) : ViewModel() {
 
     private var _groupState: MutableStateFlow<UiState<List<GroupModel>>> = MutableStateFlow(UiState.Loading)
@@ -30,6 +33,15 @@ class HomeViewModel @Inject constructor(
                 failure = {
                     _groupState.value = UiState.Error(it)
                 }
+            )
+        }
+
+        viewModelScope.launch {
+            getDestinationUseCase().fold(
+                success = {
+                    Log.d("TELEK", it.toString())
+                },
+                failure = {}
             )
         }
     }
